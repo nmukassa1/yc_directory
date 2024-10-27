@@ -30,7 +30,6 @@ async function Navbar() {
                             </form>
 
                             <Link href={`/user/${session?.user.id}`}>
-                                {/* <span>{session?.user.name}</span> */}
                                 <Image src={session?.user.image ?? ""} alt="profile img" width={25} height={25} className="rounded-full"  />
                             </Link>
 
