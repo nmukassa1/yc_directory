@@ -14,6 +14,15 @@ const nextConfig: NextConfig = {
     ],
     dangerouslyAllowSVG: true,
   },
+  experimental: {
+    ppr: 'incremental',
+    after: true
+  },
+  devIndicators: {
+    appIsrStatus: true,
+    buildActivity: true,
+    buildActivityPosition: 'bottom-right'
+  }
   /* other config options here */
 };
 
