@@ -2,7 +2,7 @@ import Form from 'next/form'
 import SearchFormReset from '@/components/SearchFormReset';
 import { Search } from 'lucide-react';
 
-function SearchFrom({query} : {query?: string}) {
+function SearchForm({query} : {query?: string}) {
 
     return ( 
         <>
@@ -27,4 +27,4 @@ function SearchFrom({query} : {query?: string}) {
      );
 }
 
-export default SearchFrom;
+export default SearchForm;

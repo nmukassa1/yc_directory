@@ -1,9 +1,8 @@
-import SearchFrom from "@/components/SearchForm";
+import SearchForm from "@/components/SearchForm";
 import StartupCard from "@/components/StartupCard";
 import { client } from "@/sanity/lib/client";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { STARTUP_QUERY } from "@/sanity/lib/queries";
-import { space } from "postcss/lib/list";
-import { replace } from "sanity/migrate";
 
 interface HomeProps {
   searchParams: Promise<{ query?: string }>;
@@ -11,11 +10,9 @@ interface HomeProps {
 
 export default async function Home({ searchParams }: HomeProps) {
   const query = (await searchParams).query || '';
-
-  const posts = await client.fetch(STARTUP_QUERY)
-  // console.log(JSON.stringify(posts, null, 2));
-  
-
+  const params = {search: query || null}
+  // const posts = await client.fetch(STARTUP_QUERY)
+  const {data: posts} = await sanityFetch({query: STARTUP_QUERY, params}) //Allows me to fetch posts in live time instead of caching it
 
   return (
     <>
@@ -30,7 +27,7 @@ export default async function Home({ searchParams }: HomeProps) {
           Submit Ideas, Vote on Pitches, Get noticed in Virtual Competitions.
         </p>
 
-        <SearchFrom query={query} />
+        <SearchForm query={query} />
       </section>
 
       <section className="section_container">
@@ -48,6 +45,8 @@ export default async function Home({ searchParams }: HomeProps) {
           )}
         </ul>
       </section>
+
+      <SanityLive />
     </>
   );
 }
