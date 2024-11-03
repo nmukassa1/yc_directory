@@ -12,7 +12,7 @@ interface HomeProps {
 export default async function Home({ searchParams }: HomeProps) {
   const query = (await searchParams).query || '';
   const params = {search: query || null}
-  // const posts = await client.fetch(STARTUP_QUERY)
+  // const posts = await client.fetch(STARTUPS_QUERY, params)
   const {data: posts} = await sanityFetch({query: STARTUPS_QUERY, params}) //Allows me to fetch posts in live time instead of caching it
 
   const session = await auth()
