@@ -16,7 +16,7 @@ export default async function Home({ searchParams }: HomeProps) {
   const {data: posts} = await sanityFetch({query: STARTUPS_QUERY, params}) //Allows me to fetch posts in live time instead of caching it
 
   const session = await auth()
-  console.log(session?.id);
+  // console.log(session?.id);
   
 
   return (
